@@ -29,8 +29,5 @@
     "psr-4": {
       "spec\\CubicMushroom\\Symfony\\MailchimpBundle\\": "spec/"
     }
-  },
-  "config": {
-    "bin-dir": "bin"
   }
 }

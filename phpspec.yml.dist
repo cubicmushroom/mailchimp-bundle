@@ -1,0 +1,4 @@
+suites:
+  main_suite:
+    namespace:    CubicMushroom\Symfony\MailchimpBundle
+    psr4_prefix:  CubicMushroom\Symfony\MailchimpBundle

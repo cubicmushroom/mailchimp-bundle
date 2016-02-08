@@ -1,0 +1,23 @@
+{
+  "name": "mailchimp-bundle",
+  "version": "0.0.0",
+  "description": "Symfony bundle for integrating the  MailChimp API",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubicmushroom/mailchimp-bundle.git"
+  },
+  "keywords": [
+    "mailchimp",
+    "symfony-bundle"
+  ],
+  "author": "Toby Griffiths <toby@cubicmushroom.co.uk> (http://tobyg.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cubicmushroom/mailchimp-bundle/issues"
+  },
+  "homepage": "https://github.com/cubicmushroom/mailchimp-bundle"
+}

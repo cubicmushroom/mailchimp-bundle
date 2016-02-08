@@ -1,4 +1,12 @@
 services:
-#    cm_mailchimp.example:
-#        class: CubicMushroom\Symfony\MailchimpBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    cm_mailchimp.mailchimp:
+        class: Mailchimp\Mailchimp
+        public: false
+        arguments: [%cm_mailchimp.mailchimp_api.api_key%]
+        lazy: true
+
+    cm_mailchimp.api:
+        class: CubicMushroom\Symfony\MailchimpBundle\Service\MailchimpApi
+        public: true
+        arguments: [@cm_mailchimp.mailchimp]
+        lazy: true

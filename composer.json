@@ -15,7 +15,7 @@
   "require": {
     "php": ">=5.5",
     "symfony/symfony": "2.7.*",
-    "pacely/mailchimp-apiv3": "~2.0"
+    "pacely/mailchimp-apiv3": "dev-master"
   },
   "require-dev": {
     "phpspec/phpspec": "~2.2@dev"

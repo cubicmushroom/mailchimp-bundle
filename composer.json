@@ -16,7 +16,8 @@
     "php": ">=5.5",
     "symfony/symfony": "2.7.*",
     "pacely/mailchimp-apiv3": "dev-master",
-    "nicolopignatelli/valueobjects": "~2.0"
+    "nicolopignatelli/valueobjects": "~2.0",
+    "doctrine/common": "~2.6"
   },
   "require-dev": {
     "phpspec/phpspec": "~2.2@dev"

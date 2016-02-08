@@ -21,11 +21,13 @@
     "phpspec/phpspec": "~2.2@dev"
   },
   "autoload": {
-    "psr-0": {
-      "": "src/"
-    },
     "psr-4": {
-      "spec\\": "spec/"
+      "CubicMushroom\\Symfony\\MailchimpBundle\\": "src/",
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "spec\\CubicMushroom\\Symfony\\MailchimpBundle\\": "spec/"
     }
   }
 }

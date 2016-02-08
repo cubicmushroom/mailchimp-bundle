@@ -18,7 +18,7 @@
     "equire mailchimp/mailchimp": "~2.0"
   },
   "require-dev": {
-    "phpspec/phpspec": "~2.2@dev",
+    "phpspec/phpspec": "~2.2@dev"
   },
   "autoload": {
     "psr-0": {

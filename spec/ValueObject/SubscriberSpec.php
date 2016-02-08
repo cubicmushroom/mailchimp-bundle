@@ -61,12 +61,32 @@ class SubscriberSpec extends ObjectBehavior
         $this->addMergeField(self::MERGE_FIELD_FNAME, self::VALUE_NAME_FIRST);
         $this->addMergeField(self::MERGE_FIELD_LNAME, self::VALUE_NAME_LAST);
 
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->getMergeFields()->shouldReturn(
             [
                 self::MERGE_FIELD_FNAME => self::VALUE_NAME_FIRST,
                 self::MERGE_FIELD_LNAME => self::VALUE_NAME_LAST,
             ]
         );;
+    }
+
+
+    /** @noinspection PhpMissingDocCommentInspection */
+    function it_exports_properties_as_an_array()
+    {
+        /** @var self|Subscriber $this */
+
+        $email = new EmailAddress(self::VALUE_EMAIL);
+
+        $this->beConstructedThrough('create', [$email, Subscriber::STATUS_SUBSCRIBED]);
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->toArray()->shouldReturn(
+            [
+                'email_address' => self::VALUE_EMAIL,
+                'status'        => 'subscribed',
+            ]
+        );
     }
     // END: Public methods
 }

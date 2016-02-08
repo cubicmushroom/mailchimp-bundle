@@ -43,7 +43,7 @@ class Subscriber
 
     // BEGIN: Properties
     /**
-     * @var string
+     * @var EmailAddress
      */
     protected $email;
 
@@ -88,7 +88,7 @@ class Subscriber
 
 
     /**
-     * @return string
+     * @return EmailAddress
      */
     public function getEmail()
     {
@@ -115,11 +115,11 @@ class Subscriber
 
 
     /**
-     * @param string $email
+     * @param EmailAddress $email
      *
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail(EmailAddress $email)
     {
         $this->email = $email;
 
@@ -138,5 +138,29 @@ class Subscriber
 
         return $this;
     }
+
+
+    /**
+     * Exports the properties of the subscriber as an array
+     */
+    public function toArray()
+    {
+        return [
+            'email_address' => $this->getEmailString(),
+            'status' => $this->status,
+        ];
+    }
     // END: Public methods
+
+    /**
+     * @return null|string
+     */
+    protected function getEmailString()
+    {
+        if (is_null($this->email)) {
+            return null;
+        }
+
+        return $this->email->toNative();
+    }
 }

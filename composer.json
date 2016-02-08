@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CubicMushroom\\Symfony\\MailchimpBundle\\": "src/",
+      "CubicMushroom\\Symfony\\MailchimpBundle\\": "src/"
     }
   },
   "autoload-dev": {

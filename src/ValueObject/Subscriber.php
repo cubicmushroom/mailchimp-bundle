@@ -97,6 +97,19 @@ class Subscriber
 
 
     /**
+     * @return null|string
+     */
+    public function getEmailString()
+    {
+        if (is_null($this->email)) {
+            return null;
+        }
+
+        return $this->email->toNative();
+    }
+
+
+    /**
      * @return ArrayCollection
      */
     public function getMergeFields()
@@ -147,20 +160,8 @@ class Subscriber
     {
         return [
             'email_address' => $this->getEmailString(),
-            'status' => $this->status,
+            'status'        => $this->status,
         ];
     }
     // END: Public methods
-
-    /**
-     * @return null|string
-     */
-    protected function getEmailString()
-    {
-        if (is_null($this->email)) {
-            return null;
-        }
-
-        return $this->email->toNative();
-    }
 }

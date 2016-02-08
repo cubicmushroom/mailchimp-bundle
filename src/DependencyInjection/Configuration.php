@@ -23,8 +23,13 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('mailchimp_api')
+                    ->isRequired()
                     ->children()
-                        ->scalarNode('api_key')->end()
+                        ->scalarNode('api_key')
+                            ->info('Set to your Mailchimp API key')
+                            ->isRequired()
+                            ->cannotBeEmpty()
+                        ->end() // 'api_key'
                     ->end()
                 ->end() // 'mailchimp_api'
             ->end();

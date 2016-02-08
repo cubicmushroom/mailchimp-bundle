@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-0": {
-      "": "src/",
+      "": "src/"
     },
     "psr-4": {
       "spec\\": "spec/"

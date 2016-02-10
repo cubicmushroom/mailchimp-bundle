@@ -2,6 +2,7 @@
 
 namespace CubicMushroom\Symfony\MailchimpBundle\Service;
 
+use CubicMushroom\Symfony\MailchimpBundle\Exception\Lists\ListInfoNotAvailableException;
 use CubicMushroom\Symfony\MailchimpBundle\Exception\UnableToAddSubscriberException;
 use CubicMushroom\Symfony\MailchimpBundle\ValueObject\Subscriber;
 use Mailchimp\Mailchimp;
@@ -17,6 +18,8 @@ class MailchimpApi
 {
 
     // BEGIN: Properties
+    const LIST_INFO_SUBSCRIBE_URL_LONG = 'subscribe_url_long';
+
     /**
      * @var Mailchimp
      */
@@ -69,5 +72,61 @@ class MailchimpApi
             );
         }
     }
+
+
+    /**
+     * @param string $mailchimpListId
+     *
+     * @return string
+     *
+     * @throws ListInfoNotAvailableException
+     *
+     * @todo Write spec for this method
+     *
+     */
+    public function getListSubscribeUri($mailchimpListId)
+    {
+        $listInfo = $this->getListInfo($mailchimpListId);
+
+        $subscribeUrlKey = self::LIST_INFO_SUBSCRIBE_URL_LONG;
+
+        if (!$listInfo->has($subscribeUrlKey)) {
+            throw ListInfoNotAvailableException::create($subscribeUrlKey);
+        }
+
+        return $listInfo->get($subscribeUrlKey);
+    }
+
+
+    /**
+     * @param string $mailchimpListId
+     *
+     * @return string
+     *
+     * @throws ListInfoNotAvailableException
+     *
+     * @todo Write spec for this method
+     */
+    public function getListUnsubscribeUri($mailchimpListId)
+    {
+        $subscribeUri = $this->getListSubscribeUri($mailchimpListId);
+
+        $unsubscribeUri = str_replace('/subscribe?', '/unsubscribe?', $subscribeUri);
+
+        return $unsubscribeUri;
+    }
     // END: Public methods
+
+
+    // BEGIN: Protected methods
+    /**
+     * @param $mailchimpListId
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    protected function getListInfo($mailchimpListId)
+    {
+        return $this->mc->get("/lists/{$mailchimpListId}");
+    }
+    // END: Protected methods
 }
